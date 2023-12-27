@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/27 18:50:16 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2023/12/28 00:39:10 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct	s_stack
 {
 	int			data;
-	struct s_list	*next;
+	struct s_stack	*next;
 }		t_stack;
 //char	**ft_split(char const *s, char c);
 t_stack	*create_elem(int i);

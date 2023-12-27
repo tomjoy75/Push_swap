@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:51:50 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/27 18:28:21 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2023/12/28 00:05:55 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 t_stack	*parsing_argument(char **argv, int argc)
 {
 	t_stack	*stack;
+	t_stack *elem;
+	int	i;
 
-	while (argv)
+	i = 0;
+	while (argv[i])
 	{
-		stack = create_elem(ft_atoi(*argv));
-		if (!stack)
+		elem = create_elem(ft_atoi(argv[i]));
+		if (!elem)
 			return (NULL);//Il faudra liberer tous les autres elements
+		stack_add_back(&stack, elem);
+		i++;
 	}
 	return (stack);
 }
