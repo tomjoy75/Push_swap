@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/27 18:09:24 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/01 00:13:28 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ int	main(int argc, char **argv)
 	if (argc < 2 || (argc == 2 && !*argv[1]))
 		return (0);
 	else if (argc == 2)
+	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv)
 			return (1);
+	}
 	else
 		argv++;
 	stack_a = parsing_argument(argv, argc);	
+	free_argv(argv, argc);
 	show_stack(stack_a);
+	free_stack(stack_a);
 	return (0);
 }
