@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:08:46 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/31 23:49:22 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/01 16:26:13 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_stack(t_stack *stack)
 	t_stack	*tmp;
 
 	if (!stack)
-		return;
+		return ;
 	while (stack)
 	{
 		tmp = stack;
@@ -52,7 +52,7 @@ void	stack_add_back(t_stack **stack, t_stack *node)
 	t_stack	*last;
 
 	if (!node)
-		return;
+		return ;
 	if (!*stack)
 		*stack = node;
 	else
@@ -60,4 +60,31 @@ void	stack_add_back(t_stack **stack, t_stack *node)
 		last = find_last_elem(*stack);
 		last->next = node;
 	}
+}
+
+void	stack_add_front(t_stack **stack, t_stack *node)
+{
+	if (!node)
+		return ;
+/*	if (!*stack)
+		node->next = NULL;
+		*stack = node;*/
+//	else
+//	{
+		node->next = *stack;
+		*stack = node;
+//	}
+}
+
+int	node_nb(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

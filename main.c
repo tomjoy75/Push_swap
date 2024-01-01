@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/01 00:13:28 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/01 18:08:27 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,20 @@ int	main(int argc, char **argv)
 	}
 	else
 		argv++;
-	stack_a = parsing_argument(argv, argc);	
+	stack_a = parsing_argument(argv, argc);
 	free_argv(argv, argc);
 	show_stack(stack_a);
+	swap(&stack_a);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	show_stack(stack_a);
+	show_stack(stack_b);
+	rotate(&stack_a);
+	rev_rotate(&stack_b);
+	show_stack(stack_a);
+	show_stack(stack_b);
 	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

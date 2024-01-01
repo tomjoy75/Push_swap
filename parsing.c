@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:51:50 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/01 02:17:48 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:11:15 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	free_argv(char **argv, int argc)
 {
-	char **temp;
+	char	**temp;
 
 	temp = argv;
 	if (argc == 2)
 	{
-		while(*temp)
+		while (*temp)
 		{
 			free(*temp);
 			temp++;
@@ -36,9 +36,22 @@ void	error_msg(t_stack *stack, char **argv, int argc)
 	exit(EXIT_FAILURE);
 }
 
+int	is_double(int n, t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		if (stack->data == n)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 int	atoi_base(char *str, t_stack *stack, char **argv, int argc)
 {
-	int		sign;
+	int			sign;
 	long long	n;
 
 	sign = 1;
@@ -56,14 +69,16 @@ int	atoi_base(char *str, t_stack *stack, char **argv, int argc)
 			error_msg(stack, argv, argc);
 		str++;
 	}
+	if (is_double(((int)n * sign), stack))
+		error_msg(stack, argv, argc);
 	return ((int)n * sign);
 }
 
 t_stack	*parsing_argument(char **argv, int argc)
 {
 	t_stack	*stack;
-	t_stack *elem;
-	int	i;
+	t_stack	*elem;
+	int		i;
 
 	i = 0;
 	stack = NULL;
@@ -71,7 +86,7 @@ t_stack	*parsing_argument(char **argv, int argc)
 	{
 		elem = create_elem(atoi_base(argv[i], stack, argv, argc));
 		if (!elem)
-			return (NULL);//Il faudra liberer tous les autres elements
+			return (NULL);
 		stack_add_back(&stack, elem);
 		i++;
 	}
