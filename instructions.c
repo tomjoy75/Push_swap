@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:26:43 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/01 19:02:37 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:03:43 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	swap(t_stack **stack)
 
 void	push(t_stack **src, t_stack **dest)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!*src)
 		return ;
@@ -44,13 +44,13 @@ void	rotate(t_stack **stack)
 	temp = (*stack)->next;
 	find_last_elem(*stack)->next = *stack;
 	(*stack)->next = NULL;
-	*stack = temp; 
+	*stack = temp;
 }
 
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*last;
-	t_stack *sec_last;
+	t_stack	*sec_last;
 
 	if (node_nb(*stack) < 2)
 		return ;

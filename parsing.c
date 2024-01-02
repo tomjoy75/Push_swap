@@ -6,27 +6,11 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:51:50 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/01 14:11:15 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/02 13:58:04 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_argv(char **argv, int argc)
-{
-	char	**temp;
-
-	temp = argv;
-	if (argc == 2)
-	{
-		while (*temp)
-		{
-			free(*temp);
-			temp++;
-		}
-		free(argv);
-	}
-}
 
 void	error_msg(t_stack *stack, char **argv, int argc)
 {
