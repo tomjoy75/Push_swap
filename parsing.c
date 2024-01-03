@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:51:50 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/02 13:58:04 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:55:19 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_stack	*parsing_argument(char **argv, int argc)
 		elem = create_elem(atoi_base(argv[i], stack, argv, argc));
 		if (!elem)
 			return (NULL);
+		elem->position = i;
 		stack_add_back(&stack, elem);
 		i++;
 	}

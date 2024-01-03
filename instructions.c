@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:26:43 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/02 14:03:43 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/03 17:07:11 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	swap(t_stack **stack)
 	(*stack)->next = temp->next;
 	temp->next = *stack;
 	*stack = temp;
+	(*stack)->position = 0;
+	(*stack)->next->position = 1;
 }
 
 void	push(t_stack **src, t_stack **dest)

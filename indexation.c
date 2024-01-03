@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:28:26 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/02 17:21:56 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/03 15:23:34 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@ void	index_nodes(t_stack *stack)
 		find_lowest_node(stack)->index = c;
 		c++;
 	}
+}
+
+t_stack	*find_node_by_index(t_stack *stack, int n)
+{
+	while (stack)
+	{
+		if (stack->index == n)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
