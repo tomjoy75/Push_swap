@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:26:43 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/03 17:07:11 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/04 10:04:12 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	push(t_stack **src, t_stack **dest)
 	temp = (*src)->next;
 	stack_add_front(dest, *src);
 	*src = temp;
+	position_update(*src);
+	position_update(*dest);
 }
 
 void	rotate(t_stack **stack)
@@ -47,6 +49,7 @@ void	rotate(t_stack **stack)
 	find_last_elem(*stack)->next = *stack;
 	(*stack)->next = NULL;
 	*stack = temp;
+	position_update(*stack);
 }
 
 void	rev_rotate(t_stack **stack)
@@ -63,4 +66,5 @@ void	rev_rotate(t_stack **stack)
 	sec_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
+	position_update(*stack);
 }

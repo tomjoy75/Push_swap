@@ -6,20 +6,20 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/03 16:59:04 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/04 14:18:10 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	show_stack(t_stack *stack)
+void	show_stack(t_stack *stack, char *name)
 {
 	int i;
 
 	i = 1;
+	ft_printf("---%s---\n", name);
 	while (stack)
 	{
-		ft_printf("---STACK---\n");
 		ft_printf("Node %d | position %d : value %d : index %d\n", i, stack->position, stack->data, stack->index);
 		stack = stack->next;
 		i++;
@@ -47,19 +47,21 @@ int	main(int argc, char **argv)
 	stack_a = parsing_argument(argv, argc);
 	free_argv(argv, argc);
 	index_nodes(stack_a);
-	show_stack(stack_a);
-	swap(&stack_a);
+//	show_stack(stack_a, "STACK A");
+/*	swap(&stack_a);
 	show_stack(stack_a);
 
-/*	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	show_stack(stack_a);
 	show_stack(stack_b);
 	rotate(&stack_a);
-	rev_rotate(&stack_b);
-	show_stack(stack_a);
-	show_stack(stack_b);*/
+	rev_rotate(&stack_b);*/
+//	ft_printf("---SIMPLE_ALGO---\n");
+	simple_algo(&stack_a, &stack_b);
+//	show_stack(stack_a, "STACK_A");
+//	show_stack(stack_b, "STACK_B");
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

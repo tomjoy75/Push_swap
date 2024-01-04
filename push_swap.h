@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/03 15:29:03 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:08:08 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,10 @@ void	rev_rotate(t_stack **stack);
 // Index
 void	index_nodes(t_stack *stack);
 t_stack	*find_node_by_index(t_stack *stack, int n);
+// Value_update
+void	position_update(t_stack *stack);
 // Algorithms
+void	show_stack(t_stack *stack, char *name);
+void	position_update(t_stack *stack);
+void	simple_algo(t_stack **stack_a, t_stack **stack_b);
 #endif
