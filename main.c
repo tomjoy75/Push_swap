@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/04 14:18:10 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/05 04:27:48 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	main(int argc, char **argv)
 	show_stack(stack_b);
 	rotate(&stack_a);
 	rev_rotate(&stack_b);*/
-//	ft_printf("---SIMPLE_ALGO---\n");
+	ft_printf("---SIMPLE_ALGO---\n");
 	simple_algo(&stack_a, &stack_b);
-//	show_stack(stack_a, "STACK_A");
-//	show_stack(stack_b, "STACK_B");
+	show_stack(stack_a, "STACK_A");
+	show_stack(stack_b, "STACK_B");
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

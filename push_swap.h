@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/04 12:08:08 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/05 04:46:27 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef struct s_stack
 	int				position;
 	struct s_stack	*next;
 }		t_stack;
+
+typedef struct s_climb_up
+{
+	int				nb_steps;
+	void	(*f)(t_stack **)	;
+	int	operation;
+}		t_climb_up;
+
 // Implementation 
 t_stack	*parsing_argument(char **argv, int argc);
 // Datastructure : manipulation of linked lists
