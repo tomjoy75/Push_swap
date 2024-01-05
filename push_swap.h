@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/05 04:46:27 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:44:34 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_climb_up
 {
 	int				nb_steps;
 	void	(*f)(t_stack **)	;
-	int	operation;
+	char	*instruction;
 }		t_climb_up;
 
 // Implementation 
@@ -58,4 +58,5 @@ void	position_update(t_stack *stack);
 void	show_stack(t_stack *stack, char *name);
 void	position_update(t_stack *stack);
 void	simple_algo(t_stack **stack_a, t_stack **stack_b);
+void	simple_algo2(t_stack **stack_a, t_stack **stack_b);
 #endif
