@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/05 14:44:34 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/07 23:45:19 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stack
 	int				index;
 	int				position;
 	struct s_stack	*next;
+	struct s_stack	*next_ix;
+	struct s_stack	*prev_ix;
 }		t_stack;
 
 typedef struct s_climb_up
@@ -46,17 +48,34 @@ void	free_stack(t_stack *stack);
 void	free_argv(char **argv, int argc);
 // Instructions : manipulation of the stack
 void	swap(t_stack **stack);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
 void	push(t_stack **src, t_stack **dest);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
 void	rotate(t_stack **stack);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
 void	rev_rotate(t_stack **stack);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 // Index
 void	index_nodes(t_stack *stack);
 t_stack	*find_node_by_index(t_stack *stack, int n);
 // Value_update
 void	position_update(t_stack *stack);
-// Algorithms
+// Push_swap_utils
 void	show_stack(t_stack *stack, char *name);
 void	position_update(t_stack *stack);
+t_climb_up	best_climb_up(t_stack	*ptr, int	size);
+void	small_push_swap(t_stack **a);
+void    push_to_stack_b(t_stack **a, t_stack **b);
+// Push_swap
 void	simple_algo(t_stack **stack_a, t_stack **stack_b);
 void	simple_algo2(t_stack **stack_a, t_stack **stack_b);
+void	simple_algo3(t_stack **stack_a, t_stack **stack_b);
+void	simple_algo4(t_stack **a, t_stack **b);
 #endif

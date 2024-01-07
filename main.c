@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/05 17:46:07 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/08 00:25:44 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	show_stack(t_stack *stack, char *name)
 	while (stack)
 	{
 		ft_printf("Node %d | position %d : value %d : index %d\n", i, stack->position, stack->data, stack->index);
+//		ft_printf("next node value %d : prev node value %d\n", stack->next_ix->data, stack->prev_ix->data);
 		stack = stack->next;
 		i++;
 	}
@@ -59,7 +60,9 @@ int	main(int argc, char **argv)
 	rotate(&stack_a);
 	rev_rotate(&stack_b);*/
 //	ft_printf("---SIMPLE_ALGO---\n");
-	simple_algo2(&stack_a, &stack_b);
+//	small_push_swap(&stack_a);
+	simple_algo4(&stack_a, &stack_b);
+//	push_to_stack_b(&stack_a, &stack_b);
 //	show_stack(stack_a, "STACK_A");
 //	show_stack(stack_b, "STACK_B");
 	free_stack(stack_a);

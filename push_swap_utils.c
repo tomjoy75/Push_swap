@@ -6,12 +6,13 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:02:30 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/05 19:17:17 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/07 01:55:18 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//Cheapest way for a node to go up the stack using rotations
 t_climb_up	best_climb_up(t_stack	*ptr, int	size)
 {
 	t_climb_up	best;
@@ -174,3 +175,69 @@ void	simple_algo2(t_stack **stack_a, t_stack **stack_b)
 		ft_printf("%sa\n", best.instruction);
 	}
 }
+
+void	simple_algo3(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*next_ptr;
+	t_stack	*prev_ptr;
+	t_stack *ptr;
+//	int	low_index;
+//	int	high_index;
+	t_climb_up	best;
+//	int		n;
+	int		size_a;
+	
+	next_ptr = (*stack_a)->next_ix;
+	prev_ptr = (*stack_a)->prev_ix;
+	push(stack_a, stack_b);
+	ft_printf("pb\n");
+	size_a = node_nb(*stack_a);
+	while (size_a > 3)
+	{
+		best = best_climb_up(next_ptr, size_a);
+		if (best.nb_steps > best_climb_up(prev_ptr, size_a).nb_steps + 1)
+			best = best_climb_up(prev_ptr, size_a);
+		while (best.nb_steps > 0)
+		{
+			best.f(stack_a);
+			best.nb_steps--;
+			ft_printf("%sa\n", best.instruction);
+		}
+		push(stack_a, stack_b);
+		ft_printf("pb\n");
+		if ((*stack_b)->prev_ix == (*stack_b)->next)
+			next_ptr = (*stack_b)->next_ix;
+		else
+		{
+			prev_ptr = (*stack_b)->prev_ix;
+			rotate(stack_b);
+			ft_printf("rb\n");
+		}
+		size_a--;
+	}	
+	//Ph 1bis: on swap a si besoin
+/*	if ((*stack_a)->data > (*stack_a)->next->data)
+	{
+		swap(stack_a);
+		ft_printf("sa\n");
+	}*/
+	small_push_swap(stack_a);
+	//Phase 2: on remet tout dans a
+	while (node_nb(*stack_b))
+	{
+		push(stack_b, stack_a);
+		ft_printf("pa\n");
+	}
+	//Phase 3: on rotate la stack a pour avoir le bon ordre
+	
+	ptr = find_node_by_index(*stack_a, 0);
+	best = best_climb_up(ptr, node_nb(*stack_a));
+
+	while (best.nb_steps > 0)
+	{
+		best.f(stack_a);
+		best.nb_steps--;
+		ft_printf("%sa\n", best.instruction);
+	}
+}
+
