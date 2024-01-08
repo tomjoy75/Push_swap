@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/07 23:45:19 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:36:24 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
+typedef struct s_climb_up t_climb_up;
 typedef struct s_stack
 {
 	int				data;
 	int				index;
 	int				position;
+	char				stack;
 	struct s_stack	*next;
 	struct s_stack	*next_ix;
 	struct s_stack	*prev_ix;
+	struct s_stack	*goal_node;
+	struct t_climb_up	*best;
 }		t_stack;
 
 typedef struct s_climb_up
@@ -33,7 +37,15 @@ typedef struct s_climb_up
 	int				nb_steps;
 	void	(*f)(t_stack **)	;
 	char	*instruction;
-}		t_climb_up;
+}	;//	t_climb_up;
+
+typedef struct s_climb_both
+{
+	int				nb_steps_both;
+	void	(*f_both)(t_stack **, t_stack **);
+	int				nb_steps_solo;
+	void	(*f_solo)(t_stack **);
+}		t_climb_both;
 
 // Implementation 
 t_stack	*parsing_argument(char **argv, int argc);

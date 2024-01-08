@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:28:26 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/06 04:35:38 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/08 11:40:08 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	parents_nodes(t_stack *stack)
 			ptr->prev_ix = find_node_by_index(stack, ptr->index - 1);
 		else
 			ptr->prev_ix = find_node_by_index(stack, size_a - 1);
+		ptr->stack = 'a';
 		ptr = ptr->next;
 	}
 }

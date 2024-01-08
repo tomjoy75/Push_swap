@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:14:06 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/08 00:38:47 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/08 17:03:12 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,20 @@ void	small_push_swap(t_stack **a)
 		sa(a);
 }
 
+int	is_sorted(t_stack *a)
+{
+	int	n;
+
+	n = a->index;
+	while (a)
+	{
+		if (a->index < n)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
 void	push_to_stack_b(t_stack **a, t_stack **b)
 {
 //	t_stack	*ref;
@@ -89,7 +103,7 @@ void	push_to_stack_b(t_stack **a, t_stack **b)
 	int	index_to_push;
 	int	i;
 
-	div = 6;//Attention, div ne doit pas etre superieur a node_nb sinon nb_nodes / div = 0
+	div = 10;//Attention, div ne doit pas etre superieur a node_nb sinon nb_nodes / div = 0
 	nb_nodes = node_nb(*a);
 	while (nb_nodes > 3)
 	{
@@ -102,7 +116,7 @@ void	push_to_stack_b(t_stack **a, t_stack **b)
 			if ((*a)->index <= ((nb_nodes / div) * 2) + find_smallest_index(*a)->index)
 			{
 				pb(a, b);
-				if ((*b)->index <= (nb_nodes / div + find_smallest_index(*a)->index))
+				if ((*b)->index < (nb_nodes / div + find_smallest_index(*a)->index))
 					rb(b);
 			}
 			else
@@ -121,16 +135,11 @@ void	push_to_stack_b(t_stack **a, t_stack **b)
 	}
 }
 
-void	simple_algo4(t_stack **a, t_stack **b)
+void	back_to_a1(t_stack **a, t_stack **b)
 {
 	t_stack	*ptr;
 	t_climb_up	best;
 
-	push_to_stack_b(a, b);
-	if (node_nb(*a) == 3)
-		small_push_swap(a);
-	else if (node_nb(*a) == 2 && (*a)->index > (*a)->next->index)
-		sa(a);
 	while(*b)
 	{
 		ptr = find_biggest_index(*b);
@@ -143,4 +152,59 @@ void	simple_algo4(t_stack **a, t_stack **b)
 		}
 		pa(a, b);
 	}
+}
+
+void	find_goal_in_a(t_stack *a, t_stack *b)
+{
+	t_stack	*ptr;
+
+	ptr = b;
+	while (ptr->stack != 'a')
+		ptr = ptr->next_ix;
+	b->goal_node = ptr;
+}
+
+int	calculate_cost(t_stack *ptr)
+{
+	t_climb_up	best_a;
+	t_climb_up	best_b;
+	t_climb_both	best;
+	int		cost;
+
+	ptr->best = best_climb_up(ptr);
+	ptr->goal_node->best = best_climb_up(ptr->goal_node);
+	cost = ptr->best.nb_steps + ptr->goal_node->best.nb_steps;
+	return (cost);
+}
+
+void	back_to_a2(t_stack **a, t_stack **b)
+{
+	t_climb_up	best;
+	t_stack		*ptr;	
+	int		cost;
+
+	ptr = *b;
+	while (*b)
+	{
+		find_goal_in_a(*a, *b);
+		best = calculate_cost(*b);
+		if (cost < ptr
+		operate
+		*b = (*b)->next;
+	}
+}
+
+void	simple_algo4(t_stack **a, t_stack **b)
+{
+//	t_stack	*ptr;
+//	t_climb_up	best;
+
+	if (is_sorted(*a))
+		return ;
+	push_to_stack_b(a, b);
+	if (node_nb(*a) == 3)
+		small_push_swap(a);
+	else if (node_nb(*a) == 2 && (*a)->index > (*a)->next->index)
+		sa(a);
+	back_to_a2(a, b);
 }

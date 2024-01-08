@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 23:11:57 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/06 23:22:06 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/08 11:43:08 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void	push(t_stack **src, t_stack **dest)
 void	pa(t_stack **a, t_stack **b)
 {
 	push(b, a);
+	((*a)->stack)--; 
 	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	push(a, b);
+	((*b)->stack)++; 
 	ft_printf("pb\n");
 }
 
