@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/09 17:43:27 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/09 23:39:50 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_stack
 	int				index;
 	int				position;
 	char				stack;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
 	struct s_stack	*next;
 	struct s_stack	*next_ix;
 	struct s_stack	*prev_ix;

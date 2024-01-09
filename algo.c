@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:31 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/09 17:30:27 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/09 23:43:51 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ void	back_to_a_temp(t_stack **a, t_stack **b)
 		}
 		pa(a, b);
 	}
+}
+
+void	back_to_a(t_stack **a, t_stack **b)
+{
+	
 }
 
 
