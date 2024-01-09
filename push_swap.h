@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/08 16:36:24 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/09 17:43:27 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack
 	struct t_climb_up	*best;
 }		t_stack;
 
-typedef struct s_climb_up
+struct s_climb_up
 {
 	int				nb_steps;
 	void	(*f)(t_stack **)	;
@@ -86,8 +86,15 @@ t_climb_up	best_climb_up(t_stack	*ptr, int	size);
 void	small_push_swap(t_stack **a);
 void    push_to_stack_b(t_stack **a, t_stack **b);
 // Push_swap
-void	simple_algo(t_stack **stack_a, t_stack **stack_b);
+/*void	simple_algo(t_stack **stack_a, t_stack **stack_b);
 void	simple_algo2(t_stack **stack_a, t_stack **stack_b);
 void	simple_algo3(t_stack **stack_a, t_stack **stack_b);
-void	simple_algo4(t_stack **a, t_stack **b);
+void	simple_algo4(t_stack **a, t_stack **b);*/
+void	push_swap(t_stack **a, t_stack **b);
+// Algo_utils
+t_stack	*find_smallest_index(t_stack *stack);
+t_stack	*find_biggest_index(t_stack *stack);
+int	is_sorted(t_stack *a);
+t_climb_up	best_climb_up_b(t_stack	*ptr, int	size);
+void	set_goalnode(t_stack *a, t_stack *b);
 #endif
