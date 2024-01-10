@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:31 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/09 23:43:51 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/10 22:40:28 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	push_to_stack_b(t_stack **a, t_stack **b)
 			{
 				pb(a, b);
 				if ((*b)->index < index_to_push_and_rotate) 
-					rb(b);
+					rb(b, 1);
 			}
 			else
-				ra(a);
+				ra(a, 1);
 			i++;
 		}
 		nb_nodes = node_nb(*a);
@@ -51,13 +51,13 @@ void	small_push_swap(t_stack **a)
 
 	ptr = find_biggest_index(*a);
 	if (ptr->position == 0)
-		ra(a);
+		ra(a, 1);
 	if (ptr->position == 1)
-		rra(a);
+		rra(a, 1);
 	if ((*a)->index > (*a)->next->index)
 		sa(a);
 }
-
+/*
 void	back_to_a_temp(t_stack **a, t_stack **b)
 {
 	t_stack	*ptr;
@@ -76,10 +76,59 @@ void	back_to_a_temp(t_stack **a, t_stack **b)
 		pa(a, b);
 	}
 }
+*/
+void	move_ptr(t_stack *ptr, t_stack **a, t_stack **b)
+{
+	if (ptr->best_sol == 0)
+	{
+		if(ptr->r >= ptr->goal_node->r)
+		{
+			rr(a, b, ptr->goal_node->r);
+			rb(b, ptr->r - ptr->goal_node->r);
+		}
+		else
+		{
+			rr(a, b, ptr->r);
+			ra(a, ptr->goal_node->r - ptr->r);
+		}
+	}
+	else if (ptr->best_sol == 1)
+	{
+		if(ptr->rr >= ptr->goal_node->rr)
+		{
+			rrr(a, b, ptr->goal_node->rr);
+			rrb(b, ptr->rr - ptr->goal_node->rr);
+		}
+		else
+		{
+			rrr(a, b, ptr->rr);
+			rra(a, ptr->goal_node->rr - ptr->rr);
+		}
+	}
+	else if (ptr->best_sol == 2)
+	{
+		ra(a, ptr->goal_node->r);
+		rrb(b, ptr->rr);
+	}
+	else if (ptr->best_sol == 3)
+	{
+		rra(a, ptr->goal_node->rr);
+		rb(b, ptr->r);
+	}
+	pa(a, b);
+}
 
 void	back_to_a(t_stack **a, t_stack **b)
 {
-	
+	t_stack	*ptr;
+
+	while (*b)
+	{
+		counting_rotation(*a);
+		counting_rotation(*b);
+		ptr = best_combination(*b);
+		move_ptr(ptr, a, b);
+	}
 }
 
 
@@ -95,5 +144,5 @@ void	push_swap(t_stack **a, t_stack **b)
 		small_push_swap(a);
 	else if (node_nb(*a) == 2 && (*a)->index > (*a)->next->index)
 		sa(a);
-	back_to_a_temp(a, b);
+	back_to_a(a, b);
 }

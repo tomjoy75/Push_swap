@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/09 23:39:50 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/10 22:20:49 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ typedef struct s_stack
 	int				index;
 	int				position;
 	char				stack;
-	int				ra;
-	int				rb;
+	int				r;
 	int				rr;
-	int				rra;
-	int				rrb;
-	int				rrr;
+	int				combi[4];
+	int				best_sol;
+	int				best_cost;
 	struct s_stack	*next;
 	struct s_stack	*next_ix;
 	struct s_stack	*prev_ix;
@@ -73,13 +72,13 @@ void	push(t_stack **src, t_stack **dest);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
 void	rotate(t_stack **stack);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
+void	ra(t_stack **a, int i);
+void	rb(t_stack **b, int i);
+void	rr(t_stack **a, t_stack **b, int i);
 void	rev_rotate(t_stack **stack);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	rra(t_stack **a, int i);
+void	rrb(t_stack **b, int i);
+void	rrr(t_stack **a, t_stack **b, int i);
 // Index
 void	index_nodes(t_stack *stack);
 t_stack	*find_node_by_index(t_stack *stack, int n);
@@ -102,5 +101,8 @@ t_stack	*find_smallest_index(t_stack *stack);
 t_stack	*find_biggest_index(t_stack *stack);
 int	is_sorted(t_stack *a);
 t_climb_up	best_climb_up_b(t_stack	*ptr, int	size);
-void	set_goalnode(t_stack *a, t_stack *b);
+void	set_goalnode(t_stack *b);
+// Counting
+void	counting_rotation(t_stack *stack);
+t_stack	*best_combination(t_stack *b);
 #endif

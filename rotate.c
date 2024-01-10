@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:22:06 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/06 17:35:40 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:34:25 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,33 @@ void	rotate(t_stack **stack)
 	position_update(*stack);
 }
 
-void	ra(t_stack **a)
+void	ra(t_stack **a, int i)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	while (i)
+	{
+		rotate(a);
+		ft_printf("ra\n");
+		i--;
+	}
 }
 
-void	rb(t_stack **b)
+void	rb(t_stack **b, int i)
 {
-	rotate(b);
-	ft_printf("rb\n");
+	while (i)
+	{
+		rotate(b);
+		ft_printf("rb\n");
+		i--;
+	}
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, int i)
 {
-	rotate(a);
-	rotate(b);
-	ft_printf("rr\n");
+	while (i)
+	{
+		rotate(a);
+		rotate(b);
+		ft_printf("rr\n");
+		i--;
+	}
 }
