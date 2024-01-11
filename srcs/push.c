@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 21:08:52 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/06 21:14:16 by tjoyeux          ###   ########.fr       */
+/*   Created: 2024/01/06 23:11:57 by tjoyeux           #+#    #+#             */
+/*   Updated: 2024/01/11 12:47:00 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h"   
 
-void	swap(t_stack **stack)
+static void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*temp;
 
-	if (node_nb(*stack) < 2)
+	if (!*src)
 		return ;
-	temp = (*stack)->next;
-	(*stack)->next = temp->next;
-	temp->next = *stack;
-	*stack = temp;
-	(*stack)->position = 0;
-	(*stack)->next->position = 1;
+	temp = (*src)->next;
+	stack_add_front(dest, *src);
+	*src = temp;
+	position_update(*src);
+	position_update(*dest);
 }
 
-void	sa(t_stack **a)
+void	pa(t_stack **a, t_stack **b)
 {
-	swap(a);
-	ft_printf("sa\n");
+	push(b, a);
+	((*a)->stack)--; 
+	ft_printf("pa\n");
 }
 
-void	sb(t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
-	swap(b);
-	ft_printf("sb\n");
-}
-
-void	ss(t_stack **a, t_stack **b)
-{
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	push(a, b);
+	((*b)->stack)++; 
+	ft_printf("pb\n");
 }
 

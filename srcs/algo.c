@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:31 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/10 22:40:28 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:34:56 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	push_to_stack_b(t_stack **a, t_stack **b)
 	int	i;
 
 	nb_nodes = node_nb(*a);
-	div = 6;
+	if (nb_nodes < 250)
+		div = 3;
+	else
+		div = 6;
 	while (nb_nodes > 3)
 	{
 		i = 0;
@@ -107,13 +110,13 @@ void	move_ptr(t_stack *ptr, t_stack **a, t_stack **b)
 	}
 	else if (ptr->best_sol == 2)
 	{
-		ra(a, ptr->goal_node->r);
-		rrb(b, ptr->rr);
+		rb(b, ptr->r);
+		rra(a, ptr->goal_node->rr);
 	}
 	else if (ptr->best_sol == 3)
 	{
-		rra(a, ptr->goal_node->rr);
-		rb(b, ptr->r);
+		ra(a, ptr->goal_node->r);
+		rrb(b, ptr->rr);
 	}
 	pa(a, b);
 }
@@ -131,6 +134,21 @@ void	back_to_a(t_stack **a, t_stack **b)
 	}
 }
 
+void	finishing(t_stack **a, t_stack *ptr)
+{
+	int		nb_r;
+	int		nb_rr;
+	int		size;
+
+	size = node_nb(*a);
+	nb_r = ptr->position;
+	nb_rr = size - ptr->position;
+	if (nb_r <= nb_rr)
+		ra(a, nb_r);
+	else
+		rra(a, nb_rr);
+}
+
 
 void	push_swap(t_stack **a, t_stack **b)
 {
@@ -145,4 +163,5 @@ void	push_swap(t_stack **a, t_stack **b)
 	else if (node_nb(*a) == 2 && (*a)->index > (*a)->next->index)
 		sa(a);
 	back_to_a(a, b);
+	finishing(a, find_node_by_index(*a, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:14:22 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/10 21:39:31 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:01:28 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	main(int argc, char **argv)
 //	small_push_swap(&stack_a);
 //	simple_algo4(&stack_a, &stack_b);
 	push_swap(&stack_a, &stack_b);
-	show_stack(stack_a, "STACK_A");
-	show_stack(stack_b, "STACK_B");
+//	show_stack(stack_a, "STACK_A");
+//	show_stack(stack_b, "STACK_B");
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

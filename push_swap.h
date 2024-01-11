@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/10 22:20:49 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:45:35 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ int		node_nb(t_stack *stack);
 void	free_stack(t_stack *stack);
 void	free_argv(char **argv, int argc);
 // Instructions : manipulation of the stack
-void	swap(t_stack **stack);
+//void	swap(t_stack **stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
-void	push(t_stack **src, t_stack **dest);
+//void	push(t_stack **src, t_stack **dest);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-void	rotate(t_stack **stack);
+//void	rotate(t_stack **stack);
 void	ra(t_stack **a, int i);
 void	rb(t_stack **b, int i);
 void	rr(t_stack **a, t_stack **b, int i);
-void	rev_rotate(t_stack **stack);
+//void	rev_rotate(t_stack **stack);
 void	rra(t_stack **a, int i);
 void	rrb(t_stack **b, int i);
 void	rrr(t_stack **a, t_stack **b, int i);
@@ -91,10 +91,6 @@ t_climb_up	best_climb_up(t_stack	*ptr, int	size);
 void	small_push_swap(t_stack **a);
 void    push_to_stack_b(t_stack **a, t_stack **b);
 // Push_swap
-/*void	simple_algo(t_stack **stack_a, t_stack **stack_b);
-void	simple_algo2(t_stack **stack_a, t_stack **stack_b);
-void	simple_algo3(t_stack **stack_a, t_stack **stack_b);
-void	simple_algo4(t_stack **a, t_stack **b);*/
 void	push_swap(t_stack **a, t_stack **b);
 // Algo_utils
 t_stack	*find_smallest_index(t_stack *stack);
