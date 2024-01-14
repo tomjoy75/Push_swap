@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/11 12:45:35 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 21:47:05 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-typedef struct s_climb_up t_climb_up;
 typedef struct s_stack
 {
 	int				data;
@@ -34,25 +33,10 @@ typedef struct s_stack
 	struct s_stack	*next_ix;
 	struct s_stack	*prev_ix;
 	struct s_stack	*goal_node;
-	struct t_climb_up	*best;
 }		t_stack;
 
-struct s_climb_up
-{
-	int				nb_steps;
-	void	(*f)(t_stack **)	;
-	char	*instruction;
-}	;//	t_climb_up;
-
-typedef struct s_climb_both
-{
-	int				nb_steps_both;
-	void	(*f_both)(t_stack **, t_stack **);
-	int				nb_steps_solo;
-	void	(*f_solo)(t_stack **);
-}		t_climb_both;
-
-// Implementation 
+//____________________IMPLEMENT PART_______________________
+// Parsing 
 t_stack	*parsing_argument(char **argv, int argc);
 // Datastructure : manipulation of linked lists
 t_stack	*create_elem(int i);
@@ -63,7 +47,27 @@ int		node_nb(t_stack *stack);
 // Memory : gestion of freeing mallocs
 void	free_stack(t_stack *stack);
 void	free_argv(char **argv, int argc);
-// Instructions : manipulation of the stack
+// Index
+void	index_nodes(t_stack *stack);
+t_stack	*find_node_by_index(t_stack *stack, int n);
+void	position_update(t_stack *stack);
+//____________________SORTING PART______________________
+// Stack_pre_sort
+void	push_swap(t_stack **a, t_stack **b);
+void	small_push_swap(t_stack **a);
+void    push_to_stack_b(t_stack **a, t_stack **b);
+// Stack_final_sort
+void	back_to_a(t_stack **a, t_stack **b);
+void	finishing(t_stack **a, t_stack *ptr);
+// Algo_utils
+t_stack	*find_smallest_index(t_stack *stack);
+t_stack	*find_biggest_index(t_stack *stack);
+int	is_sorted(t_stack *a);
+void	set_goalnode(t_stack *b);
+// Counting
+void	counting_rotation(t_stack *stack);
+t_stack	*best_combination(t_stack *b);
+//____________________MOVING STACKS____________________
 //void	swap(t_stack **stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
@@ -79,26 +83,4 @@ void	rr(t_stack **a, t_stack **b, int i);
 void	rra(t_stack **a, int i);
 void	rrb(t_stack **b, int i);
 void	rrr(t_stack **a, t_stack **b, int i);
-// Index
-void	index_nodes(t_stack *stack);
-t_stack	*find_node_by_index(t_stack *stack, int n);
-// Value_update
-void	position_update(t_stack *stack);
-// Push_swap_utils
-void	show_stack(t_stack *stack, char *name);
-void	position_update(t_stack *stack);
-t_climb_up	best_climb_up(t_stack	*ptr, int	size);
-void	small_push_swap(t_stack **a);
-void    push_to_stack_b(t_stack **a, t_stack **b);
-// Push_swap
-void	push_swap(t_stack **a, t_stack **b);
-// Algo_utils
-t_stack	*find_smallest_index(t_stack *stack);
-t_stack	*find_biggest_index(t_stack *stack);
-int	is_sorted(t_stack *a);
-t_climb_up	best_climb_up_b(t_stack	*ptr, int	size);
-void	set_goalnode(t_stack *b);
-// Counting
-void	counting_rotation(t_stack *stack);
-t_stack	*best_combination(t_stack *b);
 #endif

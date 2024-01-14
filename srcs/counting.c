@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:39:00 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 01:52:07 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 17:52:56 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	counting_rotation(t_stack *stack)
 	}
 }
 
-void	counting_combination(t_stack *b)
+static void	counting_combination(t_stack *b)
 {
 	if (b->r >= b->goal_node->r)
 		b->combi[0] = b->r;
