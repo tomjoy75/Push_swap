@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:28:26 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/08 11:40:08 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 01:55:48 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_stack	*find_lowest_node(t_stack *stack)
 
 void	parents_nodes(t_stack *stack)
 {
-	int	size_a;
+	int		size_a;
 	t_stack	*ptr;
 
 	size_a = node_nb(stack);
@@ -48,7 +48,7 @@ void	parents_nodes(t_stack *stack)
 		ptr = ptr->next;
 	}
 }
-			
+
 void	index_nodes(t_stack *stack)
 {
 	int	c;
@@ -56,7 +56,6 @@ void	index_nodes(t_stack *stack)
 
 	c = 0;
 	nb = node_nb(stack);
-//	ft_printf("node nb = %d\n", nb);
 	while (c < nb)
 	{
 		find_lowest_node(stack)->index = c;

@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:35:00 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/11/14 14:54:09 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 02:52:25 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	count_words(char const *s, char c)
 		i++;
 	}
 	return (nb_words);
-}	
+}
 
 // Function that send back a pointer and length
 static int	next_word(char c, char **next_str)

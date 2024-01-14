@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:56 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/10 22:20:38 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 02:06:32 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	is_sorted(t_stack *a)
 	{
 		if (a->index < n)
 			return (0);
+		n = a->index;
 		a = a->next;
 	}
 	return (1);
@@ -44,7 +45,7 @@ t_stack	*find_smallest_index(t_stack *stack)
 
 t_stack	*find_biggest_index(t_stack *stack)
 {
-	t_stack *ptr;
+	t_stack	*ptr;
 
 	if (!stack)
 		return (NULL);
@@ -57,28 +58,7 @@ t_stack	*find_biggest_index(t_stack *stack)
 	}
 	return (ptr);
 }
-/*
-t_climb_up	best_climb_up_b(t_stack	*ptr, int	size)
-{
-	t_climb_up	best;
-	int		nb_r;
-	int		nb_rr;
 
-	nb_r = ptr->position;
-	nb_rr = size - ptr->position;
-	if (nb_r <= nb_rr)
-	{
-		best.nb_steps = nb_r;
-		best.f = rb;
-	}
-	else
-	{
-		best.nb_steps = nb_rr;
-		best.f = rrb;
-	}
-	return (best);
-}
-*/
 void	set_goalnode(t_stack *b)
 {
 	t_stack	*ptr;
@@ -88,5 +68,3 @@ void	set_goalnode(t_stack *b)
 		ptr = ptr->next_ix;
 	b->goal_node = ptr;
 }
-
-

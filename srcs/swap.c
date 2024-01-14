@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 21:08:52 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/11 12:46:31 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 01:52:47 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	swap(t_stack **stack)
 	*stack = temp;
 	(*stack)->position = 0;
 	(*stack)->next->position = 1;
+	position_update(*stack);
 }
 
 void	sa(t_stack **a)
@@ -44,4 +45,3 @@ void	ss(t_stack **a, t_stack **b)
 	swap(b);
 	ft_printf("ss\n");
 }
-

@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:51:20 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/04 09:55:06 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/14 01:54:06 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ void	position_update(t_stack *stack)
 		stack = stack->next;
 	}
 }
-

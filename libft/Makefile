@@ -6,7 +6,7 @@
 #    By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 14:45:46 by tjoyeux           #+#    #+#              #
-#    Updated: 2023/12/31 00:37:12 by tjoyeux          ###   ########.fr        #
+#    Updated: 2024/01/13 22:23:20 by tjoyeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ NAME = libft.a
 all : $(NAME)
 
 $(NAME) : $(OBJ)
+	@echo "$(MAGENTA)$(BOLD)Creation archive: $(RESET)$(BLUE)$(ITALIC)$@$(RESET)" 
 	ar -rcs $@ $^
 
 bonus : $(OBJ) $(OBJ_BONUS)
@@ -32,6 +33,7 @@ bonus : $(OBJ) $(OBJ_BONUS)
 
 #%o : %c libft.h
 $(OBJ) : $(SRC_PATH)/%.o : $(SRC_PATH)/%.c libft.h
+	@echo "$(MAGENTA)$(BOLD)Compilation: $(RESET)$(BLUE)$(ITALIC)$<$(RESET)" 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_BONUS) : $(SRC_BONUS) libft.h
@@ -44,4 +46,18 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all 
+
+#______________________________Presentation__________________________________
+ # Colors
+ RED := \033[0;31m
+ GREEN := \033[0;32m
+ BLUE := \033[0;34m
+ MAGENTA := \033[0;35m
+ RESET := \033[0m
+
+ # Style
+ BOLD := \033[1m
+ ITALIC := \033[3m
+ BLINK := \e[5m
+
 

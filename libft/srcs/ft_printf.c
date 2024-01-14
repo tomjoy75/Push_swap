@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 18:28:47 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/31 00:10:15 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/13 23:32:00 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int	ft_printf(const char *format, ...)
 		else
 			format += 2;
 	}
+	va_end(pa);
 	return (str_size);
 }
