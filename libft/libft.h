@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:52:57 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/12/30 23:30:11 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:16:44 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,13 @@ int		ft_print_hexa_lower(va_list ap);
 int		ft_print_hexa_upper(va_list ap);
 int		ft_print_ptr(va_list ap);
 int		ft_printf(const char *format, ...);
+
+// GET_NEXT_LINE
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char **s1, char const *s2);
+char	*extract_line(char **stash);
 
 #endif

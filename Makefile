@@ -6,12 +6,13 @@
 #    By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 15:58:40 by tjoyeux           #+#    #+#              #
-#    Updated: 2024/01/13 22:20:45 by tjoyeux          ###   ########.fr        #
+#    Updated: 2024/01/15 13:34:42 by tjoyeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #________________________________Variables___________________________________
 NAME = push_swap
+NAME_BONUS = checker
 LIBFT_PATH = ./libft/
 LIBFT = $(LIBFT_PATH)libft.a
 
@@ -22,13 +23,19 @@ RM		= rm -f
 
 SRC_PATH	= ./srcs/
 OBJ_PATH	= ./objs/
+BONUS_PATH	= ./bonus/
 
-SRC		= $(wildcard $(SRC_PATH)*.c)
+COMMON_SRC	= $(filter-out $(SRC_PATH)main.c $(SRC_PATH)main_bonus.c, $(wildcard $(SRC_PATH)*.c))
+SRC		= $(COMMON_SRC) $(SRC_PATH)main.c
+SRC_BONUS	= $(COMMON_SRC) $(SRC_PATH)main_bonus.c
 OBJ		= $(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
+OBJ_BONUS	= $(SRC_BONUS:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
 
 FLAG_FILE	:= .build_started
+FLAG_BONUS	:= .build_started_bonus
 BUILD_FLAG	:= .build_done
 #________________________________Push_Swap___________________________________
+
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ) push_swap.h
@@ -36,9 +43,20 @@ $(NAME) : $(LIBFT) $(OBJ) push_swap.h
 	@echo "$(MAGENTA)$(BOLD)Linking: $(RESET)$(BLUE)$(ITALIC)$@$(RESET)"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
 
+#_________________________________Checker____________________________________
+
+bonus : $(NAME_BONUS)
+
+$(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS) push_swap.h
+	@echo "$(GREEN)$(BOLD)$(ITALIC)$$LINKING$(RESET)\n"
+	@echo "$(MAGENTA)$(BOLD)Linking: $(RESET)$(BLUE)$(ITALIC)$@$(RESET)"
+	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJ_BONUS) $(LDFLAGS)
+
+#____________________________Common operations_______________________________
+
 $(LIBFT) : $(LIBFT_PATH)/Makefile
 	@echo "$(GREEN)$(BOLD)$(ITALIC)$$LIBFT_HEADER$(RESET)\n"
-#	@echo "$(MAGENTA)$(BOLD)Libft Construction: $(BLUE)$(ITALIC)$(LIBFT)$(RESET)"
+	@echo "$(MAGENTA)$(BOLD)Libft Construction: $(BLUE)$(ITALIC)$(LIBFT)$(RESET)"
 	make -C $(LIBFT_PATH)
 	@echo "$(RESET)"
  
@@ -65,6 +83,7 @@ fclean : clean
 	make fclean -C $(LIBFT_PATH)
 	@echo "$(MAGENTA)$(BOLD)Cleaning: $(RESET)$(BLUE)$(ITALIC)$(NAME)$(RESET)"
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 
 re : fclean all
 
