@@ -6,13 +6,13 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 23:24:10 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 01:54:15 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:41:33 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rev_rotate(t_stack **stack)
+void	rev_rotate(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*sec_last;

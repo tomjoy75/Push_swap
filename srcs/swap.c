@@ -6,13 +6,13 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 21:08:52 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 01:52:47 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:41:44 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack **stack)
+void	swap(t_stack **stack)
 {
 	t_stack	*temp;
 

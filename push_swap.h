@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:15:35 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 21:47:05 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 23:54:10 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack
 	int				data;
 	int				index;
 	int				position;
-	char				stack;
+	char			stack;
 	int				r;
 	int				rr;
 	int				combi[4];
@@ -55,32 +55,33 @@ void	position_update(t_stack *stack);
 // Stack_pre_sort
 void	push_swap(t_stack **a, t_stack **b);
 void	small_push_swap(t_stack **a);
-void    push_to_stack_b(t_stack **a, t_stack **b);
+void	push_to_stack_b(t_stack **a, t_stack **b);
 // Stack_final_sort
 void	back_to_a(t_stack **a, t_stack **b);
 void	finishing(t_stack **a, t_stack *ptr);
 // Algo_utils
 t_stack	*find_smallest_index(t_stack *stack);
 t_stack	*find_biggest_index(t_stack *stack);
-int	is_sorted(t_stack *a);
+int		is_sorted(t_stack *a);
 void	set_goalnode(t_stack *b);
 // Counting
 void	counting_rotation(t_stack *stack);
 t_stack	*best_combination(t_stack *b);
 //____________________MOVING STACKS____________________
-//void	swap(t_stack **stack);
+void	swap(t_stack **stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
-//void	push(t_stack **src, t_stack **dest);
+void	push(t_stack **src, t_stack **dest);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-//void	rotate(t_stack **stack);
+void	rotate(t_stack **stack);
 void	ra(t_stack **a, int i);
 void	rb(t_stack **b, int i);
 void	rr(t_stack **a, t_stack **b, int i);
-//void	rev_rotate(t_stack **stack);
+void	rev_rotate(t_stack **stack);
 void	rra(t_stack **a, int i);
 void	rrb(t_stack **b, int i);
 void	rrr(t_stack **a, t_stack **b, int i);
+//________________________BONUS________________________
 #endif

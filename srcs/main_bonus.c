@@ -6,17 +6,63 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:55:53 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/15 16:39:36 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 23:49:59 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	init_mov_table(t_conv *tab)
+int	rotation(t_stack **a, t_stack **b, char *str)
 {
-	tab[0] = (t_conv){"ra/n", ra}
-	tab[1] = (t_conv){"rb/n", rb}
-	tab[2] = (t_conv){"rr/n", rr}
+	int	bool;
+
+	bool = 1;
+	if (!ft_strncmp(str, "ra\n", 3))
+		rotate(a);
+	else if (!ft_strncmp(str, "rb\n", 3))
+		rotate(b);
+	else if (!ft_strncmp(str, "rr\n", 3))
+	{
+		rotate(a);
+		rotate(b);
+	}
+	else if (!ft_strncmp(str, "rra\n", 4))
+		rev_rotate(a);
+	else if (!ft_strncmp(str, "rrb\n", 4))
+		rev_rotate(b);
+	else if (!ft_strncmp(str, "rrr\n", 4))
+	{
+		rev_rotate(a);
+		rev_rotate(b);
+	}
+	else
+		bool = 0;
+	return (bool);
+}
+
+void	apply_instruction(t_stack **a, t_stack **b, char *str)
+{
+	if (!ft_strncmp(str, "sa\n", 3))
+		swap(a);
+	else if (!ft_strncmp(str, "sb\n", 3))
+		swap(b);
+	else if (!ft_strncmp(str, "ss\n", 3))
+	{
+		swap(a);
+		swap(b);
+	}
+	else if (!ft_strncmp(str, "pb\n", 3))
+		push(a, b);
+	else if (!ft_strncmp(str, "pa\n", 3))
+		push(b, a);
+	else if (rotation(a, b, str))
+	{
+	}
+	else
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	check_instructions(t_stack **a, t_stack **b)
@@ -25,10 +71,10 @@ void	check_instructions(t_stack **a, t_stack **b)
 
 	while (1)
 	{
-		next_line = get_next_line(fd);
+		next_line = get_next_line(0);
 		if (next_line == NULL)
-			break;
-		
+			break ;
+		apply_instruction(a, b, next_line);
 		free(next_line);
 	}
 	if (is_sorted(*a) && *b == NULL)
@@ -57,7 +103,6 @@ int	main(int argc, char **argv)
 	stack_a = parsing_argument(argv, argc);
 	free_argv(argv, argc);
 	index_nodes(stack_a);
-//	push_swap(&stack_a, &stack_b);
 	check_instructions(&stack_a, &stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);

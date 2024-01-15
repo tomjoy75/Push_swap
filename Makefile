@@ -6,7 +6,7 @@
 #    By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 15:58:40 by tjoyeux           #+#    #+#              #
-#    Updated: 2024/01/15 13:34:42 by tjoyeux          ###   ########.fr        #
+#    Updated: 2024/01/16 00:06:09 by tjoyeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT_PATH = ./libft/
 LIBFT = $(LIBFT_PATH)libft.a
 
 CC		= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g3
 LDFLAGS		= -L$(LIBFT_PATH) -lft
 RM		= rm -f
 
@@ -87,10 +87,13 @@ fclean : clean
 
 re : fclean all
 
-c :  push_swap.h
-	$(CC) $(CFLAGS) -c -I. -g3 -fsanitize=address $(SRC) 
+##debug :  push_swap.h
+##	$(CC) $(CFLAGS) -c -I. -g3 -fsanitize=address $(SRC) 
 
-.PHONY : all clean fclean re c
+##debug_bonus :  push_swap.h
+##	$(CC) $(CFLAGS) -c -I. -g3 -fsanitize=address $(SRC_BONUS) 
+
+.PHONY : all clean fclean re debug debug_bonus
 
 #______________________________Presentation__________________________________
 # Colors

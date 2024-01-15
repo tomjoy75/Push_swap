@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:52:57 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/15 13:16:44 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/15 21:22:06 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int		ft_printf(const char *format, ...);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
+
 char	*get_next_line(int fd);
 char	*ft_strjoin_gnl(char **s1, char const *s2);
 char	*extract_line(char **stash);
