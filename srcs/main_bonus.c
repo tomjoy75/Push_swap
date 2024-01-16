@@ -60,6 +60,9 @@ void	apply_instruction(t_stack **a, t_stack **b, char *str)
 	}
 	else
 	{
+		free_stack(*a);
+		free_stack(*b);
+		get_next_line(0, 1);
 		ft_putstr_fd("Error\n", 2);
 		exit(EXIT_FAILURE);
 	}
@@ -71,7 +74,7 @@ void	check_instructions(t_stack **a, t_stack **b)
 
 	while (1)
 	{
-		next_line = get_next_line(0);
+		next_line = get_next_line(0, 0);
 		if (next_line == NULL)
 			break ;
 		apply_instruction(a, b, next_line);

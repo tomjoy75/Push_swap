@@ -89,11 +89,16 @@ char	*extract_line(char **stash)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int purge)
 {
 	static char	*stash;
 	char		*line;
 
+	if (purge)
+	{
+		free(stash);
+		return (NULL);
+	}
 	if (fd < 0 || read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = fill_stash(fd, &stash);

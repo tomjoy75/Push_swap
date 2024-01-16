@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:31 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 17:24:43 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:06:35 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	divide_stack_a(t_stack **a, t_stack **b, int div, int nb_nodes)
 		if ((*a)->index <= idx_to_push)
 		{
 			pb(a, b);
-			if ((*b)->index < idx_to_push_and_rotate) 
+			if ((*b)->index < idx_to_push_and_rotate)
 				rb(b, 1);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:28:26 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/14 17:45:02 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:05:33 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_stack	*find_lowest_node(t_stack *stack)
 	while (stack)
 	{
 		if (stack->index == -1)
-			if (!node || stack->data < node->data) 
+			if (!node || stack->data < node->data)
 				node = stack;
 		stack = stack->next;
 	}

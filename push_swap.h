@@ -46,6 +46,7 @@ void	stack_add_front(t_stack **stack, t_stack *node);
 int		node_nb(t_stack *stack);
 // Memory : gestion of freeing mallocs
 void	free_stack(t_stack *stack);
+void	error_msg(t_stack *stack, char **argv, int argc);
 void	free_argv(char **argv, int argc);
 // Index
 void	index_nodes(t_stack *stack);

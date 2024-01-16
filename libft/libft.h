@@ -125,7 +125,7 @@ int		ft_printf(const char *format, ...);
 #  define BUFFER_SIZE 5
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int purge);
 char	*ft_strjoin_gnl(char **s1, char const *s2);
 char	*extract_line(char **stash);
 
