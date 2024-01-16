@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:50:31 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/11/14 10:14:02 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/16 22:33:07 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*dest_str;
 	size_t			i;
 
-	if (!src && !dest)
+	if (!src || !dest)
 		return (NULL);
 	i = 0;
 	dest_str = (unsigned char *)dest;

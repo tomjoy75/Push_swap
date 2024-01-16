@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:58:06 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/15 13:27:09 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/16 22:25:52 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*fill_stash(int fd, char **stash)
 		*stash = ft_strdup("");
 	cup_buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!cup_buffer)
-		return (free(stash), NULL);
+		return (free(*stash), NULL);
 	bytes_read = read_and_add_to_stash(fd, stash, &cup_buffer);
 	if (bytes_read == -1)
 		return (NULL);
@@ -75,7 +75,7 @@ char	*extract_line(char **stash)
 	remainder++;
 	line = malloc((remainder - *stash + 1) * sizeof(char));
 	if (!line)
-		return (free(stash), NULL);
+		return (free(*stash), NULL);
 	i = 0;
 	while ((*stash + i) < remainder)
 	{

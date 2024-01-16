@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:53:20 by tjoyeux           #+#    #+#             */
-/*   Updated: 2023/11/14 11:05:45 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/16 22:34:45 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!big && len == 0)
+	if (!big || len == 0)
 		return (NULL);
 	if (!little[0])
 		return ((char *)big);

@@ -6,7 +6,7 @@
 /*   By: tjoyeux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:55:53 by tjoyeux           #+#    #+#             */
-/*   Updated: 2024/01/15 23:49:59 by tjoyeux          ###   ########.fr       */
+/*   Updated: 2024/01/17 00:35:00 by tjoyeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ int	rotation(t_stack **a, t_stack **b, char *str)
 	return (bool);
 }
 
-void	apply_instruction(t_stack **a, t_stack **b, char *str)
+void	apply_instruction(t_stack **a, t_stack **b, char **str)
 {
-	if (!ft_strncmp(str, "sa\n", 3))
+	if (!ft_strncmp(*str, "sa\n", 3))
 		swap(a);
-	else if (!ft_strncmp(str, "sb\n", 3))
+	else if (!ft_strncmp(*str, "sb\n", 3))
 		swap(b);
-	else if (!ft_strncmp(str, "ss\n", 3))
+	else if (!ft_strncmp(*str, "ss\n", 3))
 	{
 		swap(a);
 		swap(b);
 	}
-	else if (!ft_strncmp(str, "pb\n", 3))
+	else if (!ft_strncmp(*str, "pb\n", 3))
 		push(a, b);
-	else if (!ft_strncmp(str, "pa\n", 3))
+	else if (!ft_strncmp(*str, "pa\n", 3))
 		push(b, a);
-	else if (rotation(a, b, str))
+	else if (rotation(a, b, *str))
 	{
 	}
 	else
@@ -64,6 +64,7 @@ void	apply_instruction(t_stack **a, t_stack **b, char *str)
 		free_stack(*b);
 		get_next_line(0, 1);
 		ft_putstr_fd("Error\n", 2);
+		free(*str);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -77,7 +78,7 @@ void	check_instructions(t_stack **a, t_stack **b)
 		next_line = get_next_line(0, 0);
 		if (next_line == NULL)
 			break ;
-		apply_instruction(a, b, next_line);
+		apply_instruction(a, b, &next_line);
 		free(next_line);
 	}
 	if (is_sorted(*a) && *b == NULL)
