@@ -84,6 +84,17 @@ libft/                              # own C library
 
 ## Seeing it run
 
-The operation list is text, which is hard to read at a hundred elements. Third-party
-visualisers replay that output as an animation — they take the program's stdout and draw it.
-Worth knowing they exist; none of that code is mine, and only the algorithm here is.
+The output is a list of operation names, which stops being readable somewhere around twenty
+elements and is meaningless at five hundred. Visualisers replay that list as an animation of
+the two stacks — they consume this program's stdout and draw it.
+
+The widely used one is [o-reo/push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer):
+
+```sh
+ARG=$(python3 -c "import random;v=list(range(1,101));random.shuffle(v);print(' '.join(map(str,v)))")
+./push_swap $ARG > ops.txt
+# then feed ARG and ops.txt to the visualiser, per its own README
+```
+
+**None of that code is mine.** The visualiser is a third-party tool; what belongs to this
+repository is the algorithm that produces the operations it draws.
